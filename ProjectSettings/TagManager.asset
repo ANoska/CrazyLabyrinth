@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Board
   - GoodHole
+  - BadHole
   layers:
   - Default
   - TransparentFX
