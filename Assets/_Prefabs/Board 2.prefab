@@ -3624,7 +3624,7 @@ GameObject:
   - component: {fileID: 2143605087516050266}
   m_Layer: 0
   m_Name: Hole
-  m_TagString: Untagged
+  m_TagString: GoodHole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3715,6 +3715,10 @@ PrefabInstance:
     - target: {fileID: 8054096499676234351, guid: ddfc2c7447a52784489fe986cb164e9d, type: 3}
       propertyPath: m_Name
       value: Board 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8054096499676234351, guid: ddfc2c7447a52784489fe986cb164e9d, type: 3}
+      propertyPath: m_TagString
+      value: Board
       objectReference: {fileID: 0}
     - target: {fileID: 8054096499676234385, guid: ddfc2c7447a52784489fe986cb164e9d, type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2484728081195142748}
   - component: {fileID: 5149376845379009128}
   m_Layer: 0
-  m_Name: Hole (1)
-  m_TagString: Untagged
+  m_Name: Hole
+  m_TagString: GoodHole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
