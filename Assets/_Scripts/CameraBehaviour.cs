@@ -11,8 +11,6 @@ public class CameraBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        offset = transform.position - player.transform.position;
     }
 
     // Update is called once per frame
@@ -21,7 +19,7 @@ public class CameraBehaviour : MonoBehaviour
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player");
-            offset = transform.position - player.transform.position;
+            offset = new Vector3(0, 25, 0);
         }
     }
 
