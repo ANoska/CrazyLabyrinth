@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2653047888688859989}
   - component: {fileID: 8701278386226965492}
   - component: {fileID: 7014650051328739255}
+  - component: {fileID: 1676041714197153571}
   m_Layer: 0
   m_Name: BadHole
   m_TagString: BadHole
@@ -94,8 +95,20 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1676041714197153571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6589267064885465027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 156cacd67d9f33840823292e3447f909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7311623296498335047
 GameObject:
   m_ObjectHideFlags: 0
