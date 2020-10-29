@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class CameraBehaviour : MonoBehaviour
 {
+    [Header("Set Dynamically")]
     public GameObject player;
-    Vector3 offset;
+    public Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player");
-
+        player = GameObject.FindGameObjectWithTag("Player");
         offset = transform.position - player.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            offset = transform.position - player.transform.position;
+        }
     }
 
     void LateUpdate()
