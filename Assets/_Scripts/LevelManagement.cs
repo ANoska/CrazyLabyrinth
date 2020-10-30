@@ -1,46 +1,122 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+public enum GameMode
+{                                                         // b
+    idle,
+    playing,
+    levelEnd
+}
 
 public class LevelManagement : MonoBehaviour
 {
+    static private LevelManagement S; // a private Singleton
     [Header("Set in Inspector")]
-    public Vector3 boardPos;
-    public GameObject[] boards;
-    public GameObject player;
-
+    //public Text uitLevel;  // The UIText_Level Text
+    //public Text uitShots;  // The UIText_Shots Text
+    //public Text uitButton; // The Text on UIButton_View
+    public Vector3 boardPos; // The place to put boards
+    public GameObject[] boards;   // An array of the boards
     [Header("Set Dynamically")]
-    public int level;
-    public int levelMax;
-    public GameObject board;
-
-    // Start is called before the first frame update
+    public int level;     // The current level
+    public int levelMax;  // The number of levels
+    //public int shotsTaken;
+    public GameObject board;    // The current board
+    public GameMode mode = GameMode.idle;
+    //public string showing = "Show Slingshot"; // FollowCam mode
     void Start()
     {
+        S = this; // Define the Singleton
         level = 0;
         levelMax = boards.Length;
         StartLevel();
     }
-
-    // Update is called once per frame
-    void Update()
+    void StartLevel()
     {
-        
-    }
-
-    private void StartLevel()
-    {
+        // Get rid of the old castle if one exists
         if (board != null)
+        {
             Destroy(board);
-
-        GameObject[] gos = GameObject.FindGameObjectsWithTag("Player");
+        }
+        // Destroy old projectiles if they exist
+        GameObject[] gos = GameObject.FindGameObjectsWithTag("Projectile");
         foreach (GameObject pTemp in gos)
+        {
             Destroy(pTemp);
-
+        }
+        // Instantiate the new castle
         board = Instantiate<GameObject>(boards[level]);
         board.transform.position = boardPos;
-
-        player = Instantiate<GameObject>(player);
-        player.transform.position = GameObject.Find("SpawnPoint").transform.position;
+        //shotsTaken = 0;
+        // Reset the camera
+        //SwitchView("Show Both");
+        //ProjectileLine.S.Clear();
+        // Reset the goal
+        Goal.goalMet = false;
+        UpdateGUI();
+        mode = GameMode.playing;
     }
+    void UpdateGUI()
+    {
+        // Show the data in the GUITexts
+        uitLevel.text = "Level: " + (level + 1) + " of " + levelMax;
+        //uitShots.text = "Shots Taken: " + shotsTaken;
+    }
+    void Update()
+    {
+        UpdateGUI();
+        // Check for level end
+        if ((mode == GameMode.playing) && Goal.goalMet)
+        {
+            // Change mode to stop checking for level end
+            mode = GameMode.levelEnd;
+            // Zoom out
+            //  SwitchView("Show Both");
+            // Start the next level in 2 seconds
+            Invoke("NextLevel", 2f);
+        }
+    }
+    void NextLevel()
+    {
+        level++;
+        if (level == levelMax)
+        {
+            level = 0;
+        }
+        StartLevel();
+    }
+    /*public void SwitchView(string eView = "")
+    {                                    // c
+        if (eView == "")
+        {
+            eView = uitButton.text;
+        }
+        showing = eView;
+        switch (showing)
+        {
+            case "Show Slingshot":
+                FollowCam.POI = null;
+                uitButton.text = "Show Castle";
+                break;
+            case "Show Castle":
+                FollowCam.POI = S.castle;
+                uitButton.text = "Show Both";
+                break;
+            case "Show Both":
+                FollowCam.POI = GameObject.Find("ViewBoth");
+                uitButton.text = "Show Slingshot";
+                break;
+        }
+    }
+    /// Static method that allows code anywhere to increment shotsTaken
+    public static void ShotFired()
+    {                                            // d
+        S.shotsTaken++;
+    }*/
+
+
+
+
 }
