@@ -9,7 +9,6 @@ public class BadHoles : MonoBehaviour
     public GameObject player;
     public Rigidbody playerBody;
 
-    float timeForLerp = Time.time;
     void Start() {
         cam = GameObject.Find("Main Camera");
         player = GameObject.FindWithTag("Player");
