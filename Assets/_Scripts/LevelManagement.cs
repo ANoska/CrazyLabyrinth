@@ -54,7 +54,7 @@ public class LevelManagement : MonoBehaviour
         //SwitchView("Show Both");
         //ProjectileLine.S.Clear();
         // Reset the goal
-        Goal.goalMet = false;
+        //Goal.goalMet = false;
         UpdateGUI();
         mode = GameMode.playing;
     }
@@ -68,7 +68,7 @@ public class LevelManagement : MonoBehaviour
     {
         UpdateGUI();
         // Check for level end
-        if ((mode == GameMode.playing) && Goal.goalMet)
+        if ((mode == GameMode.playing) && Goal.goalMet)// Replace Goal with the good hole 
         {
             // Change mode to stop checking for level end
             mode = GameMode.levelEnd;
