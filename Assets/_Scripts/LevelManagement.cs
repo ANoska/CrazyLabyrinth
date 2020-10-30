@@ -14,7 +14,7 @@ public class LevelManagement : MonoBehaviour
 {
     static private LevelManagement S; // a private Singleton
     [Header("Set in Inspector")]
-    //public Text uitLevel;  // The UIText_Level Text
+    public Text uitLevel;  // The UIText_Level Text
     //public Text uitShots;  // The UIText_Shots Text
     //public Text uitButton; // The Text on UIButton_View
     public Vector3 boardPos; // The place to put boards
