@@ -323,13 +323,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 830d93d90011e984a8222b03d0ed431c, type: 3}
+  m_Script: {fileID: 11500000, guid: c7912237f903fe6448314b071fce29ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boardPos: {x: 0, y: -0.5, z: 0}
+  boardPos: {x: 0, y: 0, z: 0}
   boards:
+  - {fileID: 905340345646885348, guid: 3fae63fc722850b4eaca754198948609, type: 3}
+  - {fileID: 8589663977897294009, guid: 2c2199a17f15e7740b5d91295acfe3ba, type: 3}
   - {fileID: 8054096499676234351, guid: 4ceed01cf0f554f4fb7fb4250dcba3f1, type: 3}
-  player: {fileID: 2594225708683112293, guid: 419b2cef5013aaa47803f0f4343bba28, type: 3}
   level: 0
   levelMax: 0
   board: {fileID: 0}
+  mode: 0
+  player: {fileID: 2594225708683112293, guid: 419b2cef5013aaa47803f0f4343bba28, type: 3}
+  cam: {fileID: 0}

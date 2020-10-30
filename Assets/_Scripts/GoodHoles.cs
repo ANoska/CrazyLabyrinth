@@ -8,6 +8,8 @@ public class GoodHoles : MonoBehaviour
     public GameObject player;
     public Rigidbody playerBody;
 
+    public static bool goodHoleMet;
+
     void Start() {
         cam = GameObject.Find("Main Camera");
         player = GameObject.FindWithTag("Player");
@@ -33,6 +35,8 @@ public class GoodHoles : MonoBehaviour
             //stop motion in all horizontal axes:
             playerBody.constraints = RigidbodyConstraints.FreezePositionX;
             playerBody.constraints = RigidbodyConstraints.FreezePositionZ;
+
+            goodHoleMet = true;
         }
     }
 }

@@ -24,5 +24,8 @@ public class PlayerInput : MonoBehaviour
     void FixedUpdate() {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
         rb.AddForce(movement* speed * 2);
+        if (this.gameObject.transform.position.y < -10) {
+            Destroy(this.gameObject);
+        }
     }
 }
