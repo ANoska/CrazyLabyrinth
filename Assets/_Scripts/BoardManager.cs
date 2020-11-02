@@ -35,11 +35,11 @@ public class BoardManager : MonoBehaviour
     private float timeTaken;
 
     // Player pref keys
-    private const string PLAYER_PREF_HIGH_SCORE = "HighScore";
-    private const string PLAYER_PREF_EASY_BOARD_TIME = "EasyBoardTime";
-    private const string PLAYER_PREF_MEDIUM_BOARD_TIME = "MediumBoardTime";
-    private const string PLAYER_PREF_HARD_BOARD_TIME = "HardBoardTime";
-    private const string PLAYER_PREF_CRAZY_BOARD_TIME = "CrazyBoardTime";
+    private const string PLAYER_PREF_HIGH_SCORE = "CrazyLabyrinth_HighScore";
+    private const string PLAYER_PREF_EASY_BOARD_TIME = "CrazyLabyrinth_EasyBoardTime";
+    private const string PLAYER_PREF_MEDIUM_BOARD_TIME = "CrazyLabyrinth_MediumBoardTime";
+    private const string PLAYER_PREF_HARD_BOARD_TIME = "CrazyLabyrinth_HardBoardTime";
+    private const string PLAYER_PREF_CRAZY_BOARD_TIME = "CrazyLabyrinth_CrazyBoardTime";
 
     void Start() 
     {
