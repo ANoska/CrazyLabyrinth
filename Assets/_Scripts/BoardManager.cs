@@ -138,7 +138,7 @@ public class BoardManager : MonoBehaviour
     {
         if (PlayerPrefs.GetInt(PLAYER_PREF_HIGH_SCORE) < level + 1)
         {
-            PlayerPrefs.SetString(PLAYER_PREF_HIGH_SCORE, (level + 1).ToString());
+            PlayerPrefs.SetInt(PLAYER_PREF_HIGH_SCORE, level + 1);
 
             switch (level)
             {
@@ -287,7 +287,7 @@ public class BoardManager : MonoBehaviour
 
         // Only show the high score if there is one
         if (PlayerPrefs.HasKey(PLAYER_PREF_HIGH_SCORE))
-            uiHighScoreText.text = string.Format("High Score = {0}", PlayerPrefs.GetString(PLAYER_PREF_HIGH_SCORE));
+            uiHighScoreText.text = string.Format("High Score = {0}", PlayerPrefs.GetInt(PLAYER_PREF_HIGH_SCORE).ToString());
     }
 
     void OnRestartButtonClicked()
