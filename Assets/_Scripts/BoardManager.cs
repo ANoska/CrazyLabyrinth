@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,11 @@ public class BoardManager : MonoBehaviour
     public GameMode mode;
     public GameObject player;
 
+    // High scores pop up members
+    private GameObject uiPopUp;
+    private Button uiPopUpButton;
+    private Text uiPopUpText;
+
     private float levelStartTime;
     private float timeTaken;
 
@@ -37,6 +43,7 @@ public class BoardManager : MonoBehaviour
 
     void Start() 
     {
+        InitializeHighScoresPopUp();
         uiRestartButton.onClick.AddListener(OnRestartButtonClicked);
 
         mode = GameMode.idle;
@@ -221,9 +228,57 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    private void InitializeHighScoresPopUp()
+    {
+        // Find the pop up
+        uiPopUp = GameObject.Find("HighScorePopUp");
+
+        if (uiPopUp == null)
+            throw new InvalidOperationException("High Scores Pop Up GameObject not found");
+
+        // Add listeners for the pop up button
+        uiPopUpButton = uiPopUp.GetComponentInChildren<Button>();
+        uiPopUpButton.onClick.AddListener(CloseHighScoresPopUp);
+
+        // Find the text element we want
+        uiPopUpText = uiPopUp.GetComponentsInChildren<Text>().Where(t => t.name == "HighScorePopUpText").FirstOrDefault();
+
+        // Hide the pop up
+        uiPopUp.SetActive(false);
+    }
+
     private void NewHighScorePopUp()
     {
-        // Pop up logic to go here
+        string levelTime = "";
+        switch (level)
+        {
+            case 0:
+                levelTime = TimeSpan.FromSeconds(PlayerPrefs.GetFloat(PLAYER_PREF_EASY_BOARD_TIME)).ToString(@"mm\:ss");
+                break;
+            case 1:
+                levelTime = TimeSpan.FromSeconds(PlayerPrefs.GetFloat(PLAYER_PREF_MEDIUM_BOARD_TIME)).ToString(@"mm\:ss");
+                break;
+            case 2:
+                levelTime = TimeSpan.FromSeconds(PlayerPrefs.GetFloat(PLAYER_PREF_HARD_BOARD_TIME)).ToString(@"mm\:ss");
+                break;
+            case 3:
+                levelTime = TimeSpan.FromSeconds(PlayerPrefs.GetFloat(PLAYER_PREF_CRAZY_BOARD_TIME)).ToString(@"mm\:ss");
+                break;
+        }
+
+        string popUpMessage = string.Format("New High Score!\nLevels Completed: {0}\nLevel Time: {1}", PlayerPrefs.GetString(PLAYER_PREF_HIGH_SCORE), levelTime);
+        uiPopUpText.text = popUpMessage;
+
+        // Pause time and show the pop up
+        Time.timeScale = 0;
+        uiPopUp.SetActive(true);
+    }
+
+    private void CloseHighScoresPopUp()
+    {
+        // Hide the pop up and resume time
+        uiPopUp.SetActive(false);
+        Time.timeScale = 1;
     }
 
     private void UpdateGUI()
