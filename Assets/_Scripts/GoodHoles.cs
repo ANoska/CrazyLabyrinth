@@ -19,6 +19,9 @@ public class GoodHoles : MonoBehaviour
             //using lerp would make the fall-in motion much smoother, but requires time calculation:
             //player.transform.position = Vector3.Lerp(transform.position, this.gameObject.transform.position, .05f);
 
+            other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
+            other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionZ;
+
             goodHoleMet = true;
         }
     }
