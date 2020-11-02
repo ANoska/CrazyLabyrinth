@@ -10,11 +10,13 @@ public class PlayerInput : MonoBehaviour
     private float movementX;
     private float movementY;
 
-    void Start() {
+    void Start() 
+    {
         rb = GetComponent<Rigidbody>();
     }
 
-    void OnMove(InputValue movementValue) {
+    void OnMove(InputValue movementValue) 
+    {
         Vector2 movementVector = movementValue.Get<Vector2>();
         movementX = movementVector.x;
         movementY = movementVector.y;
@@ -24,8 +26,10 @@ public class PlayerInput : MonoBehaviour
     void FixedUpdate() {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
         rb.AddForce(movement* speed * 2);
-        if (this.gameObject.transform.position.y < -10) {
-            Destroy(this.gameObject);
+        if (this.gameObject.transform.position.y < -10)
+        {
+            // if the player object falls, respawn the player
+            Camera.main.GetComponent<BoardManager>().SpawnPlayer();
         }
     }
 }
